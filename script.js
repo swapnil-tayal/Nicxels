@@ -1,11 +1,22 @@
 const imageWrapper = document.querySelector(".images");
 const loadMoreBtn = document.querySelector(".load-more");
 const searchInput = document.querySelector(".search input");
+const 
 
 const apiKey = "d1Tqx2D3Q98YDEJwFIfmTIAidYzWdq3gdzW5jDWNqZgmBQCbXwXy5EmQ";
 const perPage = 15;
 let currentPage = 1;
 let searchWord = null;
+
+const downloadImg = (imgUrl) => {
+    
+    fetch(imgUrl).then(res => res.blob()).then(file => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(file);
+        a.download = new Date().getTime();
+        a.click();
+    }).catch(() => alert("~Failed to download image"));
+}
 
 const generateHTML = (images) => {
 
@@ -17,7 +28,9 @@ const generateHTML = (images) => {
                     <i class="uil uil-camera"></i>
                     <span>${img.photographer}</span>
                 </div>
-                <button><i class="uil uil-import"></i></button>
+                <button onclick="downloadImg('${img.src.large2x}');">
+                    <i class="uil uil-import"></i>
+                </button>
             </div>
         </li>`    
     ).join("");
@@ -52,7 +65,6 @@ const loadSearchImages = (e) => {
     if(e.target.value === "") return searchWord = null; 
     if(e.key === "Enter"){
         searchWord = e.target.value;
-        console.log(searchWord);
         currentPage = 1;
         imageWrapper.innerHTML = "";
         getImages(`https://api.pexels.com/v1/search?query=${searchWord}&page=1&per_page=${perPage}`);
