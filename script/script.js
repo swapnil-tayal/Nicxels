@@ -43,7 +43,7 @@ const generateHTML = (images) => {
                     <i class="uil uil-camera"></i>
                     <span>${img.photographer}</span>
                 </div>
-                <button onclick="downloadImg('${img.src.large2x}');event.stopPropagation();">
+                <button onclick="downloadImg('${img.src.large2x}');">
                     <i class="uil uil-import"></i>
                 </button>
             </div>
