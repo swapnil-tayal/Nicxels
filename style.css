@@ -5,3 +5,18 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
+.search{
+    height: 40vh;
+    position: relative;
+}
+.search img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+.search .content{
+    color: white;
+    position: relative; 
+    z-index: 2;
+}
