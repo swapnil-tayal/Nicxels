@@ -27,6 +27,7 @@ const showLightbox = (name, img) => {
     lightBox.classList.add("show");
     document.body.style.overflow = "hidden";
 }
+
 const hideLightBox = () => {
     lightBox.classList.remove("show");
     document.body.style.overflow = "auto";
@@ -42,7 +43,7 @@ const generateHTML = (images) => {
                     <i class="uil uil-camera"></i>
                     <span>${img.photographer}</span>
                 </div>
-                <button onclick="downloadImg('${img.src.large2x}');">
+                <button onclick="downloadImg('${img.src.large2x}');event.stopPropagation();">
                     <i class="uil uil-import"></i>
                 </button>
             </div>
