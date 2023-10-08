@@ -77,14 +77,15 @@ input, button, i{
 }
 .images .card .details{
     position: absolute;
-    bottom: -100px;
+    z-index: 4;
     width: 100%;
+    bottom: -100px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 15px 20px;
-    transition: bottom 0.1rem ease;
-    background: linear-gradient(tp top, rgba(0,0,0,0.7), transform);
+    justify-content: space-between;
+    transition: bottom 0.1s ease;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
 }
 .images .card:hover .details{
     bottom: 0;
