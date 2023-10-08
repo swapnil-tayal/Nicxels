@@ -6,7 +6,7 @@ This project is a simple website that utilizes the Pixels Free API to generate i
 ## Demo
 [Link to live demo](https://nicxels.vercel.app)
 
-![Screenshot](screenshot.png)
+![Screenshot](images/screenshot.png)
 
 ## Features
 - Generate images using Pixels Free API.
