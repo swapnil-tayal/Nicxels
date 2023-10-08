@@ -68,6 +68,8 @@ input, button, i{
     columns: 5 340px;   
 }
 .images .card{
+    display: flex;
+    overflow: hidden;
     position: relative;
     list-style: none;
     margin-top: 14px;
@@ -75,13 +77,35 @@ input, button, i{
 }
 .images .card .details{
     position: absolute;
-    bottom: 0;
+    bottom: -100px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 20px;
+    transition: bottom 0.1rem ease;
     background: linear-gradient(tp top, rgba(0,0,0,0.7), transform);
+}
+.images .card:hover .details{
+    bottom: 0;
+}
+.card .details .photographer{
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+.details .photographer i{
+    font-size: 1.4rem;
+    margin-right: 10px;
+}
+.details .photographer span{
+    font-size: 1.05rem;
+}
+.card .details button{
+    cursor: pointer;
+    padding: 3px 8px;
+    font-size: 1.1rem;
+    background: #fff;
 }
 .images img{
     width: 100%;
