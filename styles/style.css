@@ -157,6 +157,21 @@ i {
 	background: #704dff;
 }
 
+.gallery .display-selected {
+	color: #fff;
+	background: #8a6cff;
+	margin: 50px 0;
+	font-size: 1.2rem;
+	padding: 12px 27px;
+}
+.gallery .display-selected.disabled {
+	opacity: 0.6;
+	pointer-events: none;
+}
+.gallery .display-selected:hover {
+	background: #704dff;
+}
+
 .lightbox {
 	z-index: 5;
 	position: fixed;
