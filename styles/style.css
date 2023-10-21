@@ -12,7 +12,6 @@
 	align-items: center;
 	justify-content: center;
 }
-.search::before,
 .search img,
 .lightbox {
 	left: 0;
@@ -21,24 +20,12 @@
 	height: 100%;
 	position: absolute;
 }
-.search::before {
-	content: "";
-	z-index: 1;
-	background: rgba(0, 0, 0, 0.25);
-}
-.search img {
-	object-fit: cover;
-}
 .search .content {
-	z-index: 2;
 	color: #fff;
-	padding: 0 13px;
-	text-align: center;
-	position: relative;
+	z-index: 2;
 }
 .search h1 {
 	font-size: 2.65rem;
-	font-weight: 600;
 }
 .search p {
 	margin-top: 8px;
@@ -52,11 +39,10 @@
 .search-box i {
 	position: absolute;
 	left: 20px;
-	top: 50%;
+	top: 10px;
 	cursor: default;
 	color: #8d8d8d;
 	font-size: 1.4rem;
-	transform: translateY(-50%);
 }
 .search-box input {
 	width: 100%;
@@ -68,12 +54,6 @@
 	background: #fff;
 	border-radius: 5px;
 }
-.search-box input::placeholder {
-	color: #929292;
-}
-.search-box input:focus::placeholder {
-	color: #bfbfbf;
-}
 .gallery {
 	display: flex;
 	flex-direction: column;
@@ -83,8 +63,7 @@
 	gap: 15px;
 	max-width: 95%;
 	margin-top: 40px;
-	columns: 5 340px;
-	list-style: none;
+	columns: 4 340px;
 }
 .gallery .images .card {
 	display: flex;
@@ -96,8 +75,6 @@
 }
 .gallery .images img {
 	width: 100%;
-	z-index: 2;
-	position: relative;
 }
 .images .details {
 	position: absolute;
@@ -135,23 +112,17 @@ i {
 	transition: 0.2s ease;
 }
 .details button {
-	background: #fff;
 	font-size: 1.1rem;
 	padding: 3px 8px;
-}
-.details .download-btn:hover {
-	background: #f2f2f2;
 }
 .gallery .load-more {
 	color: #fff;
 	background: #8a6cff;
-	margin: 50px 0;
 	font-size: 1.2rem;
 	padding: 12px 27px;
 }
 .gallery .load-more.disabled {
 	opacity: 0.6;
-	pointer-events: none;
 }
 .gallery .load-more:hover {
 	background: #704dff;
@@ -164,41 +135,33 @@ i {
 	font-size: 1.2rem;
 	padding: 12px 27px;
 }
-.gallery .display-selected.disabled {
-	opacity: 0.6;
-	pointer-events: none;
-}
 .gallery .display-selected:hover {
 	background: #704dff;
 }
 
 .lightbox {
-	z-index: 5;
+	z-index: 10;
 	position: fixed;
-	visibility: hidden;
+	display: none;
 	background: rgba(0, 0, 0, 0.65);
 }
 .lightbox.show {
-	visibility: visible;
+	display: block;
 }
 .lightbox .wrapper {
 	position: fixed;
 	left: 50%;
 	top: 50%;
-	width: 100%;
 	padding: 20px;
-	max-width: 850px;
 	background: #fff;
 	border-radius: 6px;
 	opacity: 0;
 	pointer-events: none;
-	transform: translate(-50%, -50%) scale(0.9);
-	transition: transform 0.1s ease;
 }
 .lightbox.show .wrapper {
 	opacity: 1;
 	pointer-events: auto;
-	transform: translate(-50%, -50%) scale(1);
+	transform: translate(-50%, -50%);
 }
 .wrapper header {
 	display: flex;
@@ -225,23 +188,11 @@ header .buttons i {
 	text-align: center;
 	background: #8a6cff;
 	border-radius: 4px;
-	transition: 0.2s ease;
-}
-header .buttons i:first-child:hover {
-	background: #704dff;
-}
-header .buttons i:last-child {
-	margin-left: 10px;
-	font-size: 1.25rem;
-	background: #6c757d;
-}
-header .buttons i:last-child:hover {
-	background: #5f666d;
 }
 .wrapper .preview-img {
 	display: flex;
 	justify-content: center;
-	margin-top: 25px;
+	margin-top: 20px;
 }
 .preview-img .img {
 	max-height: 65vh;
@@ -255,13 +206,6 @@ header .buttons i:last-child:hover {
 @media screen and (max-width: 688px) {
 	.lightbox .wrapper {
 		padding: 12px;
-		max-width: calc(100% - 26px);
-	}
-	.wrapper .preview-img {
-		margin-top: 15px;
-	}
-	header .buttons i:last-child {
-		margin-left: 7px;
 	}
 	header .photographer span,
 	.search p {
@@ -270,19 +214,14 @@ header .buttons i:last-child:hover {
 	.search h1 {
 		font-size: 1.8rem;
 	}
-	.search .search-box {
-		height: 50px;
-		margin: 30px 0;
-	}
 	.gallery .images {
 		max-width: 100%;
-		padding: 0 13px;
 		margin-top: 20px;
 	}
 	.images .details {
 		bottom: 0px;
 	}
-	.gallery .load-more {
+	.gallery .load-more, .gallery .display-selected {
 		padding: 10px 25px;
 		font-size: 1.05rem;
 	}
