@@ -28,7 +28,6 @@ const downloadImg = (imgUrl) => {
 };
 
 const showLightbox = (name, img) => {
-  
   lightBox.querySelector("img").src = img;
   lightBox.querySelector("span").innerHTML = name;
   downloadImgBtn.setAttribute("data-img", img);
@@ -43,13 +42,11 @@ const hideLightBox = () => {
 };
 
 const generateHTML = (images, isSeleted = false) => {
-
-  cache = images
-  if(isSeleted){
-
+  cache = images;
+  if (isSeleted) {
     imageWrapper.innerHTML += images
       .map(
-        (img) => 
+        (img) =>
           `<li class="card" onclick="showLightbox('${img.photographer}', '${img.src.large2x}')">
               <img src="${img.src.large2x}" alt="img">
               <div class="details">
@@ -66,15 +63,13 @@ const generateHTML = (images, isSeleted = false) => {
                     </button>
                   </div>
               </div>
-          </li>` 
+          </li>`
       )
       .join("");
-
-  }else{
-
+  } else {
     imageWrapper.innerHTML += images
       .map(
-        (img) => 
+        (img) =>
           `<li class="card" onclick="showLightbox('${img.photographer}', '${img.src.large2x}')">
               <img src="${img.src.large2x}" alt="img">
               <div class="details">
@@ -86,18 +81,17 @@ const generateHTML = (images, isSeleted = false) => {
                       <i class="uil uil-import"></i>
                   </button>
               </div>
-          </li>` 
+          </li>`
       )
       .join("");
-    }
+  }
 };
 
 const removeImg = (imgUrl) => {
-
   // console.log(imgUrl);
   const newImagesSelected = [];
-  for(let i=0; i<imagesSelected.length; i++){
-    if(imagesSelected[i].src.large2x != imgUrl){
+  for (let i = 0; i < imagesSelected.length; i++) {
+    if (imagesSelected[i].src.large2x != imgUrl) {
       newImagesSelected.push(imagesSelected[i]);
     }
   }
@@ -105,8 +99,7 @@ const removeImg = (imgUrl) => {
   imagesSelected = newImagesSelected;
   // console.log(imagesSelected);
   showSelectedImages();
-}
-
+};
 
 const getImages = (apiURL) => {
   loadMoreBtn.innerHTML = "Loading...";
@@ -125,7 +118,6 @@ const getImages = (apiURL) => {
 };
 
 const loadMoreImages = () => {
-
   currentPage++;
   let apiUrl = `https://api.pexels.com/v1/curated?page=${currentPage}&per_page=${perPage}`;
   apiUrl = searchWord
@@ -150,7 +142,7 @@ const showSelectedImages = () => {
   // console.log("selected");
   imageWrapper.innerHTML = "";
   generateHTML(imagesSelected, true);
-}
+};
 
 getImages(
   `https://api.pexels.com/v1/curated?page=${currentPage}&per_page=${perPage}`
@@ -164,26 +156,29 @@ downloadImgBtn.addEventListener("click", (e) =>
 );
 
 addBtn.addEventListener("click", (e) => {
-  const selectedImg = e.target.dataset.img
+  const selectedImg = e.target.dataset.img;
   // if(imagesSelected.includes(selectedImg) != true){
   //   imagesSelected.push(selectedImg);
   // }
   // console.log(cache);
-  for(var i=0; i<cache.length; i++){
-    if(cache[i].src.large2x == selectedImg && imagesSelected.includes(cache[i]) == false){
+  for (var i = 0; i < cache.length; i++) {
+    if (
+      cache[i].src.large2x == selectedImg &&
+      imagesSelected.includes(cache[i]) == false
+    ) {
       imagesSelected.push(cache[i]);
     }
   }
   // console.log(imagesSelected);
-})
+});
 
 selectedBtn.addEventListener("click", showSelectedImages);
 
 // security
-// document.addEventListener("contextmenu", (event) => event.preventDefault());
-// document.onkeydown = function (e) {
-//   if (event.keyCode == 123) return false;
-//   if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) return false;
-//   if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) return false;
-//   if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) return false;
-// };
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+document.onkeydown = function (e) {
+  if (event.keyCode == 123) return false;
+  if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) return false;
+  if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) return false;
+  if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) return false;
+};
