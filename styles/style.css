@@ -153,6 +153,7 @@ i {
   position: fixed;
   left: 50%;
   top: 50%;
+  transform: translate(-50%, -50%);
   padding: 20px;
   background: #fff;
   border-radius: 6px;
@@ -162,7 +163,6 @@ i {
 .lightbox.show .wrapper {
   opacity: 1;
   pointer-events: auto;
-  transform: translate(-50%, -50%);
 }
 .wrapper header {
   display: flex;
