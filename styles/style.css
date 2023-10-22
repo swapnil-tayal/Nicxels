@@ -236,4 +236,8 @@ header .buttons i {
 	  padding: 10px 25px;
 	  font-size: 1.05rem;
 	}
+	.gallery .display-selected {
+	  padding: 10px 25px;
+	  font-size: 1.05rem;
+	}
   }
