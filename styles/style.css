@@ -12,8 +12,7 @@
   align-items: center;
   justify-content: center;
 }
-.search img,
-.lightbox {
+.search img {
   left: 0;
   top: 0;
   width: 100%;
@@ -140,6 +139,8 @@ i {
 }
 
 .lightbox {
+  width: 100%;
+  height: 100%;
   z-index: 10;
   position: fixed;
   display: none;
