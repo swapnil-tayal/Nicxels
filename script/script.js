@@ -94,16 +94,16 @@ const generateHTML = (images, isSeleted = false) => {
 
 const removeImg = (imgUrl) => {
 
-  console.log(imgUrl);
+  // console.log(imgUrl);
   const newImagesSelected = [];
   for(let i=0; i<imagesSelected.length; i++){
     if(imagesSelected[i].src.large2x != imgUrl){
       newImagesSelected.push(imagesSelected[i]);
     }
   }
-  console.log(newImagesSelected);
+  // console.log(newImagesSelected);
   imagesSelected = newImagesSelected;
-  console.log(imagesSelected);
+  // console.log(imagesSelected);
   showSelectedImages();
 }
 
@@ -147,7 +147,7 @@ const loadSearchImages = (e) => {
 };
 
 const showSelectedImages = () => {
-  console.log("selected");
+  // console.log("selected");
   imageWrapper.innerHTML = "";
   generateHTML(imagesSelected, true);
 }
@@ -174,7 +174,7 @@ addBtn.addEventListener("click", (e) => {
       imagesSelected.push(cache[i]);
     }
   }
-  console.log(imagesSelected);
+  // console.log(imagesSelected);
 })
 
 selectedBtn.addEventListener("click", showSelectedImages);
