@@ -8,6 +8,9 @@ This project is a simple website that utilizes the Pixels Free API to generate i
 
 ![Screenshot](images/screenshot.png)
 
+## API DEMO
+- https://www.pexels.com/api/documentation/#photos
+
 ## Features
 - Generate images using Pixels Free API.
 - Customizable parameters for image generation.

@@ -15,16 +15,17 @@ const perPage = 15;
 let currentPage = 1;
 let searchWord = null;
 
-const downloadImg = (imgUrl) => {
-  fetch(imgUrl)
-    .then((res) => res.blob())
-    .then((file) => {
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(file);
-      a.download = new Date().getTime();
-      a.click();
-    })
-    .catch(() => alert("~Failed to download image"));
+const downloadImg = async (imgUrl) => {
+  try {
+    const response = await fetch(imgUrl);
+    const file = await response.blob(); // binary representation of file
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(file);
+    a.download = new Date().getTime();
+    a.click();
+  } catch (e) {
+    alert("~Failed to download image");
+  }
 };
 
 const showLightbox = (name, img) => {
@@ -101,20 +102,21 @@ const removeImg = (imgUrl) => {
   showSelectedImages();
 };
 
-const getImages = (apiURL) => {
-  loadMoreBtn.innerHTML = "Loading...";
-  loadMoreBtn.classList.add("disabled");
+const getImages = async (apiURL) => {
+  try {
+    loadMoreBtn.innerHTML = "Loading...";
+    loadMoreBtn.classList.add("disabled");
 
-  fetch(apiURL, {
-    headers: { Authorization: apiKey },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      generateHTML(data.photos);
-      loadMoreBtn.innerHTML = "Load More";
-      loadMoreBtn.classList.remove("disabled");
-    })
-    .catch(() => alert("Failed to load images"));
+    const response = await fetch(apiURL, {
+      headers: { Authorization: apiKey },
+    });
+    const data = await response.json();
+    generateHTML(data.photos);
+    loadMoreBtn.innerHTML = "Load More";
+    loadMoreBtn.classList.remove("disabled");
+  } catch (e) {
+    alert("Failed to load images");
+  }
 };
 
 const loadMoreImages = () => {
@@ -157,10 +159,6 @@ downloadImgBtn.addEventListener("click", (e) =>
 
 addBtn.addEventListener("click", (e) => {
   const selectedImg = e.target.dataset.img;
-  // if(imagesSelected.includes(selectedImg) != true){
-  //   imagesSelected.push(selectedImg);
-  // }
-  // console.log(cache);
   for (var i = 0; i < cache.length; i++) {
     if (
       cache[i].src.large2x == selectedImg &&
@@ -175,10 +173,10 @@ addBtn.addEventListener("click", (e) => {
 selectedBtn.addEventListener("click", showSelectedImages);
 
 // security
-document.addEventListener("contextmenu", (event) => event.preventDefault());
-document.onkeydown = function (e) {
-  if (event.keyCode == 123) return false;
-  if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) return false;
-  if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) return false;
-  if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) return false;
-};
+// document.addEventListener("contextmenu", (event) => event.preventDefault());
+// document.onkeydown = function (e) {
+//   if (event.keyCode == 123) return false;
+//   if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) return false;
+//   if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) return false;
+//   if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) return false;
+// };
