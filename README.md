@@ -4,8 +4,6 @@ This project is a simple website that utilizes the Pixels Free API to generate i
 
 
 ## Demo
-[Link to live demo](https://nicxels.vercel.app)
-
 ![Screenshot](images/screenshot.png)
 
 ## API DEMO
