@@ -89,14 +89,12 @@ const generateHTML = (images, isSeleted = false) => {
 };
 
 const removeImg = (imgUrl) => {
-  // console.log(imgUrl);
   const newImagesSelected = [];
   for (let i = 0; i < imagesSelected.length; i++) {
     if (imagesSelected[i].src.large2x != imgUrl) {
       newImagesSelected.push(imagesSelected[i]);
     }
   }
-  // console.log(newImagesSelected);
   imagesSelected = newImagesSelected;
   // console.log(imagesSelected);
   showSelectedImages();
@@ -167,16 +165,6 @@ addBtn.addEventListener("click", (e) => {
       imagesSelected.push(cache[i]);
     }
   }
-  // console.log(imagesSelected);
 });
 
 selectedBtn.addEventListener("click", showSelectedImages);
-
-// security
-// document.addEventListener("contextmenu", (event) => event.preventDefault());
-// document.onkeydown = function (e) {
-//   if (event.keyCode == 123) return false;
-//   if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) return false;
-//   if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) return false;
-//   if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) return false;
-// };
