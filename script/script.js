@@ -136,7 +136,7 @@ const loadSearchImages = (e) => {
       `https://api.pexels.com/v1/search?query=${searchWord}&page=1&per_page=${perPage}`
     );
   }
-};
+}; 
 
 const showSelectedImages = () => {
   // console.log("selected");
