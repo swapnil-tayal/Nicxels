@@ -9,8 +9,10 @@ const addBtn = lightBox.querySelector(".uil-plus");
 
 let imagesSelected = [];
 let cache = [];
-const localData = JSON.parse(localStorage.selected);
-imagesSelected = localData;
+if(localStorage.selected && localStorage.selected.length > 0){
+  const localData = JSON.parse(localStorage.selected);
+  imagesSelected = localData;
+}
 
 const apiKey = "d1Tqx2D3Q98YDEJwFIfmTIAidYzWdq3gdzW5jDWNqZgmBQCbXwXy5EmQ";
 const perPage = 15;
