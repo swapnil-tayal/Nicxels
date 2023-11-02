@@ -9,6 +9,8 @@ const addBtn = lightBox.querySelector(".uil-plus");
 
 let imagesSelected = [];
 let cache = [];
+const localData = JSON.parse(localStorage.selected);
+imagesSelected = localData;
 
 const apiKey = "d1Tqx2D3Q98YDEJwFIfmTIAidYzWdq3gdzW5jDWNqZgmBQCbXwXy5EmQ";
 const perPage = 15;
@@ -96,7 +98,7 @@ const removeImg = (imgUrl) => {
     }
   }
   imagesSelected = newImagesSelected;
-  // console.log(imagesSelected);
+  localStorage.setItem("selected", JSON.stringify(imagesSelected));
   showSelectedImages();
 };
 
@@ -139,9 +141,9 @@ const loadSearchImages = (e) => {
 }; 
 
 const showSelectedImages = () => {
-  // console.log("selected");
   imageWrapper.innerHTML = "";
   generateHTML(imagesSelected, true);
+  localStorage.setItem("selected", JSON.stringify(imagesSelected));
 };
 
 getImages(
@@ -157,7 +159,7 @@ downloadImgBtn.addEventListener("click", (e) =>
 
 addBtn.addEventListener("click", (e) => {
   const selectedImg = e.target.dataset.img;
-  for (var i = 0; i < cache.length; i++) {
+  for (let i = 0; i < cache.length; i++) {
     if (
       cache[i].src.large2x == selectedImg &&
       imagesSelected.includes(cache[i]) == false
@@ -165,6 +167,7 @@ addBtn.addEventListener("click", (e) => {
       imagesSelected.push(cache[i]);
     }
   }
+  localStorage.setItem("selected", JSON.stringify(imagesSelected));
 });
 
 selectedBtn.addEventListener("click", showSelectedImages);
